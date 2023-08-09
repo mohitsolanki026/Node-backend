@@ -1,0 +1,43 @@
+# Node.js dependencies
+/node_modules
+
+# Logs and crash reports
+/logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Output of npm
+npm-debug.log
+npm-debug.log.*
+npm-*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# VS Code settings
+.vscode
+
+# macOS
+.DS_Store
+
+# Thumbnails
+**/.thumbnails
+
+# Testing and build folders
+/coverage
+/build
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript generated files
+*.js.map
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Heroku
