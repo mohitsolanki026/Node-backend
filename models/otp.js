@@ -10,6 +10,10 @@ const otp = mongoose.Schema({
     otp: {
         type: Number,
         required: true,
+    },
+    verified:{
+        type: Boolean,
+        default: false,
     }
 })
 

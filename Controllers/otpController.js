@@ -9,6 +9,10 @@ async function generateOtp(req, res) {
         // Check for regeneration of OTP
         const stored = await Otp.findOne({ phoneNumber });
 
+        if(stored.verified === true){
+            return res.status(400).send("user already exists")
+        }
+
         if (stored) {
             stored.otp = otp;
             await stored.save();
@@ -28,7 +32,7 @@ async function generateOtp(req, res) {
 }
 
 async function verifyOtp(req,res){
-    try {
+    try{
 
         const {phoneNumber, otp} = req.body;
 
@@ -37,16 +41,16 @@ async function verifyOtp(req,res){
         if(!stored){
             return res.status(400).send("generate Otp first");
         }
-
         if(stored.otp === otp){
-            await Otp.deleteOne({ phoneNumber });
+            stored.verified = true;
+            await stored.save();
             return res.status(200).send("verify success");
         }
         else{
             return res.status(404).send("wrong Otp");
         }
         
-    } catch (error) {
+    }catch (error) {
         console.log(error)
         return res.status(500).send(error);
     }
