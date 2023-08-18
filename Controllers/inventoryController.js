@@ -11,6 +11,8 @@ async function inventory(req,res){
     }
 }
 
+
+
 module.exports = {
     inventory,
 }
